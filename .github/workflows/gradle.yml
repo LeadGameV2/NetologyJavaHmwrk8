@@ -27,7 +27,7 @@ jobs:
         run: pkill -f app-replan-delivery || true
 
       - name: Start SUT BankAPI
-        run: java -jar ./artifacts/app-ibank.jar &
+        run: java -jar ./artifacts/app-ibank.jar -P:profile=test &
 
       - name: Build with Gradle
-        run: ./gradlew test --tests "bank.*" --info -Dselenide.headless=true
+        run: ./gradlew test --tests "bank.*" --info -Dselenide.headless=true 
