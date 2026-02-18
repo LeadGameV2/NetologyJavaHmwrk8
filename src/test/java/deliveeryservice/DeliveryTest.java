@@ -1,6 +1,7 @@
 package deliveeryservice;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
@@ -23,6 +24,8 @@ public class DeliveryTest {
     @BeforeAll
     static void setupUpAll() {
         WebDriverManager.chromedriver().setup();
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("selenide.headless", "false"));
+
     }
 
     @BeforeEach
