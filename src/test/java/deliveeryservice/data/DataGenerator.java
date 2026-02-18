@@ -1,4 +1,4 @@
-package data;
+package deliveeryservice.data;
 
 import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;

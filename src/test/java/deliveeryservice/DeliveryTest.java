@@ -1,11 +1,14 @@
+package deliveeryservice;
+
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
-import data.DataGenerator;
+import deliveeryservice.data.DataGenerator;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
@@ -13,7 +16,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-class DeliveryTest {
+public class DeliveryTest {
+
+    private WebDriver driver;
 
     @BeforeAll
     static void setupUpAll() {
@@ -21,15 +26,27 @@ class DeliveryTest {
     }
 
     @BeforeEach
-    void setup() {
-        //open("http://localhost:9999");
+    void setUp() {
         open("http://localhost:9999");
     }
 
-    @AfterEach
-    void tearDown() {
-        WebDriverRunner.closeWebDriver();
-    }
+//    @BeforeEach
+//    void setUp() {
+//        // Почему-то у меня не инициализируется вебдрайвер самостоятельно локально используя open
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--remote-allow-origins=*");
+//        driver = new ChromeDriver(options);
+//        WebDriverRunner.setWebDriver(driver);
+//        driver.get("http://localhost:9999");
+//    }
+
+//    @AfterEach
+//    void tearDown() {
+//        // Закрываем драйвер после теста
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
     @Test
     @DisplayName("Should successful plan and replan meeting")
